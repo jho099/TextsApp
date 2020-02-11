@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Texts02</string>
     <string name="textView1">hi user!</string>
+    <string name="textView2"></string>
     <string name="button1">display</string>
     <string name="name_hint">Enter name</string>
     <string name="button2">next</string>
@@ -20,4 +21,6 @@
         <item>boa</item>
         <item>cobra</item>
     </string-array>
+    <string name="one_snake">hi %1$s, here is 1 snek.\n</string>
+    <string name="more_snakes">hi %1$s, here are %2$d sneks.\n</string>
 </resources>

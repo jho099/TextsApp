@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button nameButton;
     EditText responseText;
     TextView displayText;
+    TextView displayText2;
     int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         nameButton = findViewById(R.id.nameButton);
         responseText = findViewById(R.id.editText1);
         displayText = findViewById(R.id.textView1);
+        displayText2 = findViewById(R.id.textView2);
     }
 
 
@@ -30,16 +32,24 @@ public class MainActivity extends AppCompatActivity {
         displayText.setText(responseText.getText().toString() + ", here are some sneks \n");
     }
 
-    public void colorChange(View view) {
+    public void changeSnake(View view) {
 
         Resources res = getResources();
         String[] snakes = res.getStringArray(R.array.snakes_array);
-        if(index >= snakes.length) {
+        String name = responseText.getText().toString();
+        if(index >= snakes.length || index == 0) { //at the end of the array or very beginning
             index = 0;
-            displayText.setText(responseText.getText().toString() + ", here are some sneks \n");
+            String oneSnake = getString(R.string.one_snake, name);
+            displayText.setText(oneSnake);
+            displayText2.setText("");
         }
+        else{ //anywhere in between
+            String moreSnakes = getString(R.string.more_snakes, name, index+1);
+            displayText.setText(moreSnakes);
+        }
+        //regardless of index, DO THIS DOWN BELOW
         String snakeStr = snakes[index];
-        displayText.setText(displayText.getText() + " " + snakeStr);
+        displayText2.setText(displayText2.getText() + " " + snakeStr);
         index++;
 
     }
